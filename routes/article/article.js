@@ -16,9 +16,6 @@ router.post('/list', async function (req, res, next) {
             query: req.query
         });
     } else {
-        // let totals = await mysql.query(
-        //     "SELECT * FROM blog_article "
-        // )
         let list = await mysql.query(
             "SELECT ba.article_id,ba.title,ba.content,ba.view,ba.create_time,ba.subtitle,IFNULL(bac.count ,'0') AS count FROM blog_article AS ba  LEFT JOIN (SELECT article_id,COUNT(id) AS count  FROM blog_article_comment_relational GROUP BY article_id ) AS bac ON ba.article_id = bac.article_id WHERE ba.is_delete != 1"
         )
