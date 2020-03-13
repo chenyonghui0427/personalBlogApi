@@ -72,10 +72,12 @@ router.post('/add_article', async function (req, res, next) {
             msg: '参数错误'
         });
     } else {
-
+        console.log(
+            `INSERT INTO blog_article (article_id, is_delete, title, content, view, create_time, subtitle) VALUES (NULL, '0', '${title}', '${content}', '0', ${date}, '${subtitle}')`
+        )
         let info = JSON.stringify(
             await mysql.query(
-                `INSERT INTO blog_article (article_id, is_delete, title, content, view, create_time, subtitle) VALUES (NULL, '0', '${title}', "${content}", '0', ${date}, '${subtitle}')`
+                `INSERT INTO blog_article (article_id, is_delete, title, content, view, create_time, subtitle) VALUES (NULL, '0', '${title}', ${content}, '0', ${date}, '${subtitle}')`
             )
         );
         res.json({

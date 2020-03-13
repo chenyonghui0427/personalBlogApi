@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var articleRouter = require('./routes/article/article');
 var commentRouter = require('./routes/comments/comment');
 var loginRouter = require('./routes/login/login');
+var courseRouter = require('./routes/course/course');
 
 var app = express();
 //解决跨域
@@ -39,6 +40,7 @@ app.use('/users', usersRouter);
 app.use('/article', articleRouter);
 app.use('/comment', commentRouter);
 app.use('/login', loginRouter);
+app.use('/course', courseRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

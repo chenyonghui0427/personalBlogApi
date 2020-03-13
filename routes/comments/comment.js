@@ -15,17 +15,17 @@ router.post('/list', async function (req, res, next) {
             msg: '参数错误'
         });
     } else {
-        let totals =await mysql.query(
+        let totals = await mysql.query(
             "SELECT * FROM blog_comment "
         )
-        let list = JSON.stringify(await mysql.query(
+        let list = await mysql.query(
             "select a.*,b.* from blog_article_comment_relational a left join blog_comment b on a.comment_id=b.comment_id "
-        ))
+        )
         res.json({
             code: 1,
             msg: '获取成功',
             list: list,
-            totals:totals.length
+            totals: totals.length
         });
     }
 });
