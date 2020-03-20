@@ -30,10 +30,6 @@ router.post('/login', function (req, res, next) {
                 });
             }
         }
-        // res.json({
-        //     res: res,
-        //     password: password
-        // });
     })
 
 });
